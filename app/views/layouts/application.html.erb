@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>blogApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <style type="text/css" href="./style.css"></style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+   <nav>
+    <div class="nav-wrapper">
+      <a href="/">blogApp</a>
+      <% if user_signed_in? %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <li><a class="post" href="/blogs/new">New Entry
+      </ul>
+      <% else %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "SignIn", new_user_session_path, :class => 'post' %></li>
+        <li><%= link_to "SignUp", new_user_registration_path, :class => 'post' %></li>
+      <% end %>
+    </div>
+   </nav>
+
+      <%= yield %>
+
+    <footer>
+      <p>
+        Copyright blogApp 2018.
+      </p>
+    </footer>
+
+
+  </body>
+</html>

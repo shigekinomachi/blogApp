@@ -1,0 +1,11 @@
+  <div class="contents row">
+  </div>
+    <%= form_for (@blog), :url => {:action => 'update'} do |f| %>
+      <h3>Edit</h3>
+      <div class= "field">
+      <%= f.text_field :text, id: :blog_text ,name: :text%>
+     </div>
+      <div class = "action">
+      <%= f.submit :SAVE %>
+      </div>
+    <% end %>
